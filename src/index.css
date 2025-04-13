@@ -1,0 +1,179 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ededed;
+  overflow: hidden;
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ヘッダーのスタイル調整 */
+.header {
+  background-color: #282c34;
+  padding: 0 20px; /* 左右のパディングは維持 */
+  height: 60px; /* 高さを固定 */
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center; /* 縦方向の中央揃え */
+  justify-content: space-between; /* ロゴとその他のコンテンツの間隔 */
+}
+
+.header h1 {
+  margin: 0; /* デフォルトのマージンを削除 */
+  font-size: 24px;
+}
+
+/* メインコンテンツのスタイル調整（ヘッダーとフッターの高さ変更に合わせる） */
+.content {
+  flex: 1;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-y: auto;
+  width: 100%;
+  box-sizing: border-box;
+  /* 以下を追加して高さを自動調整 */
+  height: calc(100vh - 100px); /* 100pxはヘッダー(60px)とフッター(40px)の合計 */
+}
+
+/* フッターのスタイル調整 */
+.footer {
+  background-color: #282c34;
+  height: 40px; /* 高さを固定 */
+  padding: 0 20px; /* 左右のパディングは維持 */
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer p {
+  margin: 0; /* デフォルトのマージンを削除 */
+}
+
+/* モバイル対応のレスポンシブスタイル */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .header {
+    height: 50px; /* モバイルでは少し小さく */
+    padding: 0 16px;
+  }
+  
+  .header h1 {
+    font-size: 18px;
+  }
+  
+  .content {
+    padding: 12px;
+    max-width: 100%;
+    height: calc(100vh - 80px); /* 80pxはモバイルでのヘッダー(50px)とフッター(30px)の合計 */
+  }
+  
+  /* カードが縦に並ぶように */
+  .ant-col-md-8 {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    margin-bottom: 16px;
+  }
+  
+  /* カードの高さを制限 */
+  .ant-card {
+    max-height: 400px;
+    margin-bottom: 16px;
+  }
+  
+  /* モーダルがスマホ画面に合わせて表示されるように */
+  .ant-modal {
+    width: 90% !important;
+    margin: 10px auto;
+  }
+  
+  /* フォーム要素のサイズ調整 */
+  .ant-form-item {
+    margin-bottom: 16px;
+  }
+  
+  .ant-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* モバイルでのイベントカード内のテキスト */
+  .ant-list-item-meta-title {
+    font-size: 16px;
+  }
+  
+  .ant-list-item-meta-description {
+    font-size: 12px;
+  }
+  
+  /* ボタンのサイズ調整 */
+  .ant-btn-sm {
+    font-size: 12px;
+    height: 28px;
+    padding: 0 8px;
+  }
+  
+  /* タッチしやすいボタンサイズに */
+  .icon-button {
+    min-width: 36px;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* 長いテキストの折り返し */
+  .ant-typography, p, span {
+    word-break: break-word;
+  }
+  
+  /* フッターのスタイル調整 */
+  .footer {
+    height: 30px; /* モバイルでは少し小さく */
+    padding: 0 16px;
+    font-size: 12px;
+  }
+}
+
+/* タブレット対応 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .content {
+    max-width: 95%;
+    padding: 16px;
+  }
+  
+  .ant-card {
+    margin-bottom: 16px;
+  }
+}
+
+/* タッチデバイス対応 */
+@media (hover: none) {
+  /* タッチデバイス用のボタン拡大 */
+  .ant-btn, button {
+    min-height: 44px;  /* Apple推奨のタッチターゲットサイズ */
+  }
+  
+  /* スクロールの慣性 */
+  .ant-card-body, .content {
+    -webkit-overflow-scrolling: touch;
+  }
+}
